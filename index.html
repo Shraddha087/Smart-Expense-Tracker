@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>💰 Smart Expense Tracker with AI Insights</h1>
+
+<h2>Total Expense: ₹ {{ total }}</h2>
+
+<form action="/add" method="post">
+    <input type="text" name="category" placeholder="Category" required>
+    <input type="number" name="amount" placeholder="Amount" required>
+    <input type="text" name="description" placeholder="Description">
+    <button>Add Expense</button>
+</form>
+
+<h2>📊 Category-wise Spending</h2>
+<ul>
+    {% for cat, amt in categories.items() %}
+        <li>{{ cat }} : ₹{{ amt }}</li>
+    {% endfor %}
+</ul>
+
+<h2>🧠 AI Insights</h2>
+<ul>
+    {% for insight in insights %}
+        <li>{{ insight }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
